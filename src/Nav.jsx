@@ -10,12 +10,14 @@ function Nav() {
           <ul className="nav-links">
             <NavLink
               to="/colours"
+              id="home-link"
               style={({isActive}) => (isActive ? activeStyle : undefined)}
             >
-              Home
+              Home 
             </NavLink>
             <NavLink
               to="/colours/new"
+              id="new-colour-link"
               style={({isActive}) => (isActive ? activeStyle : undefined)}
             >
               New Colour

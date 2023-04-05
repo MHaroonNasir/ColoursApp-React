@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom';
+
 function Home({coloursList}) {
     return(
         <>
-        <h1>Hello</h1>
-        <div>
-            {coloursList.map(colour => <div>
-                <h1>{colour.name}</h1>
-                <p>{colour.hex}</p>
+        <h1>Colours</h1>
+        <div className='colour-list'>
+            {coloursList.map(colour => <div key={colour.hex} className='colour-block'>
+                <Link to={`/colours/${colour.hex}`} >
+                    <h3 className='overrideFont linkColour'>{colour.name}</h3>
+                </Link>    
+                <p className='overrideFont'>{colour.hex}</p>
                 <img src={colour.image_url}/>
             </div>)}
         </div>
