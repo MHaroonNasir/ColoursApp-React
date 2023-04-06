@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useColour } from '../../contexts/Colours';
 
-function ViewColour({colour, setColour, coloursList}) {
+function ViewColour() {
+    const {colour, setColour} = useColour()
     const {hex} = useParams();
     console.log("hex:", hex);
     

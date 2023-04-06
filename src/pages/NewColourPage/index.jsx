@@ -1,8 +1,12 @@
 import React from "react"
 import {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useColourList } from "../../contexts/ColourList";
+import { useColour } from "../../contexts/Colours";
 
-function NewColour({inputText, setInputText, colour, setColour, coloursList, setColoursList}) {
+function NewColour({inputText, setInputText}) {
+    const {colour, setColour} = useColour()
+    const {coloursList, setColoursList} = useColourList();
     const navigate = useNavigate()
 
     const handleInput = e => {
