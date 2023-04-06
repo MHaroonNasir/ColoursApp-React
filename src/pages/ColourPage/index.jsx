@@ -4,9 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useColour } from '../../contexts/Colours';
 
 function ViewColour() {
-    const {colour, setColour} = useColour()
+    const {colour, setColour, coloursList, setColoursList} = useColour()
     const {hex} = useParams();
-    console.log("hex:", hex);
+    // console.log("hex:", hex);
+    const navigate = useNavigate()
     
     useEffect(() => {
         fetchDetails()
@@ -16,7 +17,7 @@ function ViewColour() {
         const response = await fetch(`https://www.thecolorapi.com/id?hex=${hex}`)
         const results = await response.json()
         setColour(results);
-        console.log("setcolour:", colour)
+        // console.log("setcolour:", colour)
     }
 
     /*coloursList.forEach(element => {
@@ -24,6 +25,14 @@ function ViewColour() {
             setColour(element)
         }
     });*/
+
+    const handleDelete = () => {
+        let newColours = coloursList.filter((item) => item.name !== colour.name.value)
+        console.log("colour: ", colour)
+        console.log("newcolour", newColours)
+        setColoursList(newColours)
+        navigate("/colours")
+    }
 
     return (
         <>
@@ -34,6 +43,7 @@ function ViewColour() {
             <img src={colour.image.bare}/>
         </div>
         <button onClick={() => navigate("/colours")}>Back</button>
+        <button onClick={handleDelete}>Delete Colour</button>
         </>
     )
 }

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useColourList } from '../../contexts/ColourList';
+import { useColour } from '../../contexts/Colours';
 
 function Home() {
-    const {coloursList} = useColourList();
+    const {coloursList} = useColour();
 
     return(
         <>
